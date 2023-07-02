@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Создать аккаунт{% endblock %}
+
+{% block content %}
+<style>
+    .center-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .user-registration-form {
+        width: 300px;
+        background-color: #f7f7f7;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .form-field {
+        margin-bottom: 10px;
+    }
+    .form-field label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .form-field input[type="text"],
+    .form-field input[type="password"] {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+    .form-field input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+</style>
+
+<div class="center-content">
+
+    <form action="." method="post" class="user-registration-form">
+        <h5>Создать аккаунт</h5>
+        {% csrf_token %}
+        <div class="form-field">
+            <label for="{{ user_form.username.id_for_label }}">Имя пользователя:</label>
+            {{ user_form.username }}
+        </div>
+        <div class="form-field">
+            <label for="{{ user_form.first_name.id_for_label }}">Имя:</label>
+            {{ user_form.first_name }}
+        </div>
+        <div class="form-field">
+            <label for="{{ user_form.last_name.id_for_label }}">Фамилия:</label>
+            {{ user_form.last_name }}
+        </div>
+        <div class="form-field">
+            <label for="{{ user_form.email.id_for_label }}">Почта:</label>
+            {{ user_form.email }}
+        </div>
+        <div class="form-field">
+            <label for="{{ user_form.password.id_for_label }}">Пароль:</label>
+            {{ user_form.password }}
+        </div>
+        <div class="form-field">
+            <label for="{{ user_form.repeat_password.id_for_label }}">Повторите пароль:</label>
+            {{ user_form.repeat_password }}
+        </div>
+        <div class="form-field">
+            <input type="submit" value="Создать аккаунт">
+        </div>
+    </form>
+</div>
+{% endblock %}
+

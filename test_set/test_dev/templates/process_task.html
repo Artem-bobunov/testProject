@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block container %}
+  <h1>Process Task</h1>
+
+  <form method="POST" action="{% url 'process_task' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Process Task</button>
+  </form>
+
+{% endblock %}
